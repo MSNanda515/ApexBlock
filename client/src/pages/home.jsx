@@ -1,4 +1,4 @@
-import {Navbar} from "../components";
+import {Footer, Navbar} from "../components";
 
 const Home = () => {
     return (
@@ -6,7 +6,9 @@ const Home = () => {
           <div className="min-h-screen">
               <div className="gradient-bg-welcome">
                   <Navbar />
+
               </div>
+              <Footer />
           </div>
       </>
     );

@@ -1,16 +1,36 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import logo from "../../../assets/images/logo.png";
 
 const navigation = [
     { name: 'Market', href: '#', current: false },
     { name: 'Exchange', href: '#', current: false },
     { name: 'Tutorial', href: '#', current: false },
     { name: 'Wallets', href: '#', current: false },
+    { name: 'Login', href: '#', current: false },
 ]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
+}
+
+const NavbarItem = ({item}) => {
+    return (
+        <>
+            <a
+                key={item.name}
+                href={item.href}
+                className={classNames(
+                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    'px-3 py-2 rounded-md text-sm font-medium'
+                )}
+                aria-current={item.current ? 'page' : undefined}
+            >
+                {item.name}
+            </a>
+        </>
+    )
 }
 
 function Navbar() {
@@ -36,28 +56,18 @@ function Navbar() {
                                     <img
                                         className="block lg:hidden h-8 w-auto"
                                         src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                                        alt="Workflow"
+                                        alt="ApexBlock"
                                     />
                                     <img
                                         className="hidden lg:block h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                                        src={logo}
                                         alt="Workflow"
                                     />
                                 </div>
-                                <div className="hidden sm:block sm:ml-6">
+                                <div className="hidden sm:block sm:ml-6 pl-8">
                                     <div className="flex space-x-4">
-                                        {navigation.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'px-3 py-2 rounded-md text-sm font-medium'
-                                                )}
-                                                aria-current={item.current ? 'page' : undefined}
-                                            >
-                                                {item.name}
-                                            </a>
+                                        {navigation.map((item, index) => (
+                                            <NavbarItem item={item}/>
                                         ))}
                                     </div>
                                 </div>

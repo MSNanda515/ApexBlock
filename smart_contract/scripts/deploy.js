@@ -1,10 +1,10 @@
 const main = async () =>  {
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+    const transactionsFactory = await hre.ethers.getContractFactory("Transactions");
+    const transactionsContract = await transactionsFactory.deploy();
 
-  await greeter.deployed();
+    await transactionsContract.deployed();
 
-  console.log("Greeter deployed to:", greeter.address);
+    console.log("Transactions address: ", transactionsContract.address);
 }
 
 const runMain = async () => {
